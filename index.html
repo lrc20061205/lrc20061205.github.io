@@ -1,105 +1,64 @@
-<html lang="zh-cn">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-	<link rel="shortcut icon" href="favicon.ico">
-	<title>Welcome To My Website | LrenC ⌓‿⌓</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=50%, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" /> 
-	<script>
-	</script>
-	<style>
-		body {
-		margin: 0;
-		background-image: url(https://s21.ax1x.com/2025/06/14/pVAsfG6.jpg);
-
-
-		background-position: right 38% bottom 35%;
-		background-attachment: fixed;
-		background-size: cover;
-		}
-		h1{/*标题类*/
-			color: #00008B;
-			margin-top: 3px;
-			margin-bottom: 1px;
-			margin-left: 5%;
-
-		}
-		.time{/*时间*/
-			color: black;
-			font-size: 10px;
-			margin-top: 1px;
-			margin-bottom: 10px;
-			margin-left: 5%;
-		}
-		.tr{/*副标题*/
-			color: #00008B;
-			margin-top: 1px;
-			margin-bottom: 20px;
-			margin-left: 6%;
-			
-		}
-		.Text{/*文本类*/
-			text-indent: 2em;
-			margin: 0px;
-			padding-bottom: 0px;
-			color: #4169E1;
-			margin-left: 6%;
-		}
-		.ls{
-			
-			margin-left: 6%;
-			margin-bottom: 0px;
-			margin-top: 15px;
-			 font-weight: bold;
-			color: #0000CD;
-			/*margin-left: 6%;*/
-		}
-		 #footer {
-			height: 40px;
-			bottom: 0;
-			width: 100%;
-			text-align: center;
-			background: #333;
-			color: #fff;
-			font-family: Arial;
-			font-size: 12px;
-			letter-spacing: 1px;
-		}
-		a{
-			color: #19CAAD;
-		}
-
-		#main{
-			background-color: rgb(237, 237, 229, 80%);
-			min-height: 100%;/*这里不调到120%的话，部分浏览器显示footer会显示不到底（footer条下方有空白，这里点名手机版edge）*/
-			margin-left: 10%;
-			margin-right: 10%;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Ciallo～(∠・ω<)⌒☆</title>
+  <link rel="stylesheet" type="text/css" href="./index-style.css">
+  <link rel="stylesheet" type="text/css" href="./player.css">
 </head>
 <body>
 
-	<div id="main">
-		<p class="time">最后编辑时间：2025-10-03 20:10</p>
-		<div>
-			<h1>关于本人</h1>
-			<p class="Text">普通人（...此处省略一万字...(●'◡'●)）</p>
-			
-			<p class="ls">喜欢的游戏</p>
-			<p class="Text">一个人时喜欢玩独立游戏，人多时喜欢玩沙盒游戏（沙盒四巨头我都有，可点下方链接加Steam好友联机，看到都会同意）</p>
-			
-			<p class="ls">性格</p>
-			<p class="Text">i人...在现实中熟悉之前不怎么说话，熟悉之后变成e人 (￣y▽,￣)╭...有人来找我聊天也能变成e人(●ˇ∀ˇ●)</p>
-		</div>
-		<div>
-			<h1>线索</h1>
-			<p class="tr">记得备注----麦片勿扰（一堆麦片的在我QQ空间点赞，我蚌埠住了）</p>
-			<!-- <p class="Text">WX:wxid_sspfjeagixg922</p> -->
-			<p class="Text">QQ:1919881399</p>
 
-			<p class="Text"><a href="http://space.bilibili.com/522633812/">BiliBili</a></p>
-			<p class="Text"><a href="https://steamcommunity.com/id/LauncherGenshin/">Steam主页</a>可加好友</p>
-		</div>
-	</div>
-	<div id="footer">主机提供商:<a href="https://pages.github.com">GitHub Pages</a></div>
+
+  <div class="card">
+    <div class="player-container" id="playerContainer">
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-buffer" id="progressBuffer"></div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-thumb" id="progressThumb"></div>
+      </div>
+    </div>
+    <div class="time-display">
+      <span id="currentTime">00:00</span>
+      <span id="totalTime">00:00</span>
+    </div>
+    <div class="controls">
+      <button id="playBtn">播放</button>
+      <span class="status" id="status">准备中...</span>
+    </div>
+  </div>
+    <div class="avatar">
+      <img src="./profile.jpg"
+           alt="头像"
+           onerror="this.style.display='none'; this.parentElement.innerHTML = '<div class=\'avatar-placeholder\'>👤</div>';">
+    </div>
+    <div class="name">
+      <h1>Lrenc</h1>
+      <span class="badge">计算机爱好者</span>
+    </div>
+    <div class="bio">
+      <p>正在学习计算机中...</p>
+      <p>sudo rm -rf /*</p>
+    </div>
+    <div class="divider"></div>
+    <div class="bio">
+      <p>
+        QQ:1919881399</br>
+        <a href="https://steamcommunity.com/id/LauncherGenshin/" target="_blank">Steam</a></br>
+        邮箱:1919881399@qq.com</br>
+      </p>
+    </div>
+    
+
+    </div>
+    <div class="footer">
+
+      <span>© 2026 Lrenc</span>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+  <script src="player.js"></script>
+  <script src="player-move.js"></script>
 </body>
 </html>
