@@ -3,45 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Ciallo～(∠・ω<)⌒☆</title>
-  <link rel="stylesheet" type="text/css" href="./index-style.css">
-  <link rel="stylesheet" type="text/css" href="./player.css">
+  <title>Lrenc | Ciallo～(∠・ω<)⌒☆</title>
+  <link rel="stylesheet" type="text/css" href="./css/index-style.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/player.min.css">
 </head>
 <body>
-
-
-
   <div class="card">
+
     <div class="player-container" id="playerContainer">
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-buffer" id="progressBuffer"></div>
-      <div class="progress-bar" id="progressBar">
-        <div class="progress-thumb" id="progressThumb"></div>
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-buffer" id="progressBuffer"></div>
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-thumb" id="progressThumb"></div>
+        </div>
       </div>
+      <div class="time-display">
+        <span id="currentTime">00:00</span>
+        <span id="totalTime">00:00</span>
+      </div>
+      <div class="controls">
+        <button id="playBtn">播放</button>
+        <span class="status" id="status">准备中...</span>
+      </div>
+      <span id="songName"></span>
     </div>
-    <div class="time-display">
-      <span id="currentTime">00:00</span>
-      <span id="totalTime">00:00</span>
-    </div>
-    <div class="controls">
-      <button id="playBtn">播放</button>
-      <span class="status" id="status">准备中...</span>
-    </div>
-  </div>
+
     <div class="avatar">
       <img src="./profile.jpg"
            alt="头像"
            onerror="this.style.display='none'; this.parentElement.innerHTML = '<div class=\'avatar-placeholder\'>👤</div>';">
     </div>
+
     <div class="name">
       <h1>Lrenc</h1>
       <span class="badge">计算机爱好者</span>
     </div>
+
     <div class="bio">
       <p>正在学习计算机中...</p>
       <p>sudo rm -rf /*</p>
     </div>
+
     <div class="divider"></div>
+
     <div class="bio">
       <p>
         QQ:1919881399</br>
@@ -54,11 +58,90 @@
     </div>
     <div class="footer">
 
-      <span>© 2026 Lrenc</span>
+      <span>Lrenc</span>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
-  <script src="player.js"></script>
-  <script src="player-move.js"></script>
+  <script src="./js/player.min.js"></script>
+  <script src="./js/player-move.min.js"></script>
+  <script>
+     console.log(
+        '                   _oo0oo_                     \n' +
+          '                  o8888888o										\n' +
+          '                  88" . "88										\n' +
+          '                  (| -_- |)										\n' +
+          '                   O\\ = /O										\n' +
+          "               ____/`---'\\____									\n" +
+          "             .   ' \\\\| |// `.									\n" +
+          '              / \\\\||| : |||// \\								\n' +
+          '           / _||||| -卍- |||||- \\								\n' +
+          '              | | \\\\\\ - /// | |								\n' +
+          "            | \\_| ''\\---/'' | |								\n" +
+          '             \\ .-\\__ `-` ___/-. /							\n' +
+          "          ___`. .' /--.--\\ `. . __							\n" +
+          '       ."" "< `.___\\_<|>_/___. ` >" "".        \n' +
+          '      | | : `- \\`.;`\\ _ /`;.`/ - ` : | |       \n' +
+          '        \\ \\ `-. \\_ __\\ /__ _/ .-` / /          \n' +
+          "======`-.____`-.___\\_____/___.-`____.-'======  \n" +
+          "                   `=---='                     \n" +
+          '.............................................  \n\t\t' +
+          '佛祖镇楼                  BUG辟易                          \n\t' +
+          '佛曰:\n\t\t' +
+          '写字楼里写字间，写字间里程序员；\n\t\t' +
+          '程序人员写程序，又拿程序换酒钱。\n\t\t' +
+          '酒醒只在网上坐，酒醉还来网下眠；\n\t\t' +
+          '酒醉酒醒日复日，网上网下年复年。\n\t\t' +
+          '但愿老死电脑间，不愿鞠躬老板前；\n\t\t' +
+          '奔驰宝马贵者趣，公交自行程序员。\n\t\t' +
+          '别人笑我忒疯癫，我笑自己命太贱；\n\t\t' +
+          '不见满街漂亮妹，哪个归得程序员？'
+      )
+
+
+    var songList = ['bgm1.mp3','bgm2.mp3','bgm3.mp3','bgm4.mp3','bgm5.mp3'];
+    var songNameList = ['adagio for summer wind','那个夏天','託された想い','纯纯的夏天','雪風','反乌托邦Pt2.0'];
+    var randomIdenx = Math.floor(Math.random() * songList.length)
+
+    const sound = new Howl({
+    src: 'bgm/' + songList[randomIdenx], // 替换为你的音频
+    html5: true, // 重要：支持精确 seek
+    
+    onload: function() {
+      document.getElementById('songName').textContent = '播放：' + songNameList[randomIdenx];
+      document.getElementById('status').textContent = '已加载';
+      updateTotalTime();
+      // 显示缓冲进度
+      updateBuffer();
+    },
+    
+    onplay: function() {
+      document.getElementById('status').textContent = '播放中';
+      startProgressUpdate();
+    },
+    
+    onpause: function() {
+      document.getElementById('status').textContent = '已暂停';
+      stopProgressUpdate();
+    },
+    
+    onstop: function() {
+      document.getElementById('status').textContent = '已停止';
+      stopProgressUpdate();
+      resetProgress();
+    },
+    
+    onend: function() {
+      document.getElementById('status').textContent = '播放结束';
+      stopProgressUpdate();
+      // 确保进度条到 100%
+      updateProgressBar(1);
+    },
+    
+    onloaderror: function(id, error) {
+      console.error('加载失败:', error);
+      document.getElementById('status').textContent = '? 加载失败';
+    }
+  });
+  </script>
 </body>
 </html>
